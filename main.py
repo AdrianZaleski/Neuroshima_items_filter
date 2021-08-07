@@ -7,3 +7,4 @@ TODO - rozpisać tutaj wszystko
 
 if __name__ == '__main__':
 
+#   TODO: Wrzucić tutaj obsługę pod programów do jednego miejsca. Aby było to prawdziwy main.
