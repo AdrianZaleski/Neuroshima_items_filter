@@ -35,19 +35,15 @@ if __name__ == '__main__':
     print(f"\nDostępne jest ogólnie: {len(ammo_wiersze)} pozycji amunicji do wyboru \n")
 
     available_ammo = []
+
     def available_ammo_func():
 
         for kaliber in ammo_wiersze:
-            opcja = szansa(0, 100)
-            if int(kaliber[4]) >= opcja:
+            if int(kaliber[4]) >= szansa(0, 100):
                 available_ammo.append(kaliber)
 
         # Dodanie zerwego wiersza z nazwami kolumn:
         available_ammo.insert(0, nazwy_kolumn)
-
-        # # Wypisanie listy dostępnej u sprzedawcy jako i - nazwa, cena gambli:
-        # print(f"Po losowaniu dostępne jest: {len(available_ammo)} pozycji.\n")
-        # wypisanie_nazwa_cena(available_ammo, 2, 3)
 
         return available_ammo
 
