@@ -21,7 +21,7 @@ import csv
 from random import randint as szansa
 
 from modul_wypisanie_nazwa_cena_typ import wypisanie_nazwa_cena_typ
-from modul_wypisanie_ogolne import wypisanie_ogolne
+from modul_wypis import wypisanie_ogolne
 from ammo import ammo_whole as amunicja
 from weapon_class import weapon_whole as typ_broni
 

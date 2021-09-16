@@ -1,8 +1,4 @@
-"""
-Moduł mający zebrane różne własne funkcje:
-- Wypisanie wszystkich wierszy
-- Wypisanie wierszy z konkretnym indexem
-"""
+
 
 # Wypisanie konkretnych pozycji z listy w liście po nazwie i cenie:
 def wypisanie_nazwa_cena_typ(lista, id_nazwa, id_ceny, id_typ, id_ammo, id_avail):

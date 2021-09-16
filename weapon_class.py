@@ -3,7 +3,7 @@ Program do losowania broni dostępnej w ofercie u sprzedawcy z pliku CSV.
 """
 
 import csv
-from Neuroshima.modul_wypisanie_ogolne import wypisanie_ogolne
+from modul_wypis import wypisanie_ogolne
 
 # Utworzenie zmiennych
 nazwy_kolumn = []
