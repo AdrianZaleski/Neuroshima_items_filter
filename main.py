@@ -13,7 +13,7 @@ if __name__ == "__main__":
             "ID",
             "Name",
             "Weapon Class",
-            "Ammo_id",
+            "Ammo",
             "Magazine",
             "Misfire roll",
             "Celność w %",
@@ -34,7 +34,7 @@ if __name__ == "__main__":
     print(df)
 
     # Preparation for database and first table:
-    engine = create_engine("sqlite:///C:\\Python_Kurs\\Neuroshima\\database\\main_database2.db", echo=True)
+    engine = create_engine("sqlite:///C:\\Python_Kurs\\Neuroshima\\database\\main_database.db", echo=True)
     meta = MetaData()
     connection = engine.connect()
 
@@ -43,8 +43,8 @@ if __name__ == "__main__":
         meta,
         Column("ID", Integer, primary_key=True, autoincrement=True),
         Column("Name", String(length=20)),
-        Column("Weapon Class", String(length=20)),
-        Column("Ammo_id", String(length=20)),
+        Column("Weapon_Class", String(length=20)),
+        Column("Ammo", String(length=20)),
         Column("Magazine", Integer),
         Column("Misfire roll", Integer),
         Column("Celność w %", Integer),
@@ -62,3 +62,7 @@ if __name__ == "__main__":
         Column("Description", String(length=20)),
     )
     meta.create_all(engine)
+
+    # Inserting values from CSV into Table:
+    df.to_sql("Ranged", con=engine, schema=None, if_exists='replace', index=True)
+
