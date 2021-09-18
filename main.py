@@ -1,36 +1,59 @@
 """
 Making a database from CSV file - take 1
 """
-
-import pandas as pd
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Boolean, ForeignKey
+import pandas as pd
 
 if __name__ == "__main__":
-    ranged_data = pd.read_csv(r"CSV/Bronie prototyp - RANGED.csv")
+    ranged_data = pd.read_csv(
+        r"CSV/Bronie prototyp - RANGED.csv",
+        names=(
+            "id_ranged",
+            "name",
+            "weapon_class",
+            "ammo",
+            "magazine",
+            "misfire_roll",
+            "accuracy",
+            "shot_range",
+            "fire_rate",
+            "attack_type",
+            "reload",
+            "penetration",
+            "damage",
+            "strength",
+            "holster",
+            "price",
+            "availability",
+            "actions",
+            "description",
+        )
+    )
     weapon_data = pd.read_csv(r"CSV/Bronie prototyp - WEAPON.csv")
+    ammo_data = pd.read_csv(r"CSV/Bronie prototyp - AMMO.csv")
 
     ranged_df = pd.DataFrame(
         ranged_data,
         columns=[
-            "ID",
-            "Name",
-            "Weapon Class",
-            "Ammo",
-            "Magazine",
-            "Misfire roll",
-            "Celność w %",
-            "Zasięg [m]",
-            "Fire Rate",
-            "Attack Type",
-            "Reload",
-            "Punkty przebicia",
-            "Damage",
-            "Strength",
-            "Holster",
-            "Price",
-            "Availability",
-            "Actions",
-            "Description",
+            "id_ranged",
+            "name",
+            "weapon_class",
+            "ammo",
+            "magazine",
+            "misfire_roll",
+            "accuracy",
+            "shot_range",
+            "fire_rate",
+            "attack_type",
+            "reload",
+            "penetration",
+            "damage",
+            "strength",
+            "holster",
+            "price",
+            "availability",
+            "actions",
+            "description",
         ],
     )
 
@@ -38,6 +61,7 @@ if __name__ == "__main__":
         weapon_data,
         columns=[
             "ID",
+            "ID code",
             "Name",
             "Description",
             "Modifier 10m",
@@ -54,12 +78,27 @@ if __name__ == "__main__":
             "Modifier 300m",
             "Modifier 400m",
             "Modifier 600m",
-            "Modifier 1000m"
+            "Modifier 1000m",
             "Modifier 1500m",
         ],
     )
-    print(weapon_df)
-    # Preparation for database and first table:
+
+    ammo_df = pd.DataFrame(
+        ammo_data,
+        columns=[
+            "ID",
+            "Ammo Symbol",
+            "Name",
+            "Price",
+            "Availability",
+            "Crafting Difficulty",
+            "Description",
+            "Effect",
+            "Image",
+            "Weight",
+        ],
+    )
+    # Database segment:
     engine = create_engine(
         "sqlite:///C:\\Python_Kurs\\Neuroshima\\database\\main_database.db", echo=True
     )
@@ -69,31 +108,32 @@ if __name__ == "__main__":
     ranged = Table(
         "Ranged",
         meta,
-        Column("ID", String(length=20), primary_key=True, unique=True),
-        Column("Name", String(length=20)),
-        Column("Weapon_Class", String(length=20), ForeignKey("Weapon.ID")),
-        Column("Ammo", String(length=20)),
-        Column("Magazine", Integer),
-        Column("Misfire roll", Integer),
-        Column("Celność w %", Integer),
-        Column("Zasięg [m]", Integer),
-        Column("Fire Rate", Integer),
-        Column("Attack Type", String(length=20)),
-        Column("Reload", String(length=20)),
-        Column("Punkty przebicia", Integer),
-        Column("Damage", String(length=20)),
-        Column("Strength", Integer),
-        Column("Holster", Boolean),
-        Column("Price", Integer),
-        Column("Availability", Integer),
-        Column("Actions", String(length=20)),
-        Column("Description", String(length=20)),
+        Column("id_ranged", Integer, primary_key=True, autoincrement=True),
+        Column("name", String(length=20)),
+        Column("weapon_class", String, ForeignKey("Weapon.ID code"), unique=True),
+        Column("ammo", Integer, ForeignKey("Ammo.Ammo Symbol"), unique=True),
+        Column("magazine", Integer),
+        Column("misfire_roll", Integer),
+        Column("accuracy", Integer),
+        Column("shot_range", Integer),
+        Column("fire_rate", Integer),
+        Column("attack_type", String(length=20)),
+        Column("reload", String(length=20)),
+        Column("penetration", Integer),
+        Column("damage", String(length=20)),
+        Column("strength", Integer),
+        Column("holster", Boolean),
+        Column("price", Integer),
+        Column("availability", Integer),
+        Column("actions", String(length=20)),
+        Column("description", String(length=20))
     )
 
     weapon = Table(
         "Weapon",
         meta,
-        Column("ID", String(length=20), primary_key=True, unique=True),
+        Column("ID", Integer, primary_key=True, autoincrement=True),
+        Column("ID code", String(length=25), unique=True),
         Column("Name", String(length=25)),
         Column("Description", String(length=400)),
         Column("Modifier 10m", Integer),
@@ -114,8 +154,24 @@ if __name__ == "__main__":
         Column("Modifier 1500m", Integer),
     )
 
+    ammo = Table(
+        "Ammo",
+        meta,
+        Column("ID", Integer, primary_key=True, autoincrement=True),
+        Column("Ammo Symbol", String(length=25), unique=True),
+        Column("Name", String(length=50)),
+        Column("Price", Integer),
+        Column("Availability", Integer),
+        Column("Crafting Difficulty", String(length=25)),
+        Column("Description", String(length=400)),
+        Column("Effect", String(length=50)),
+        Column("Image", String(length=50)),
+        Column("Weight", Integer),
+    )
+
     meta.create_all(engine)
 
     # Inserting values from CSV into Table:
     ranged_df.to_sql("Ranged", con=connection, schema=None, if_exists="replace", index=False)
     weapon_df.to_sql("Weapon", con=connection, schema=None, if_exists="replace", index=False)
+    ammo_df.to_sql("Ammo", con=connection, schema=None, if_exists="replace", index=False)
