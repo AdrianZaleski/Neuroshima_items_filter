@@ -7,6 +7,7 @@ import pandas as pd
 if __name__ == "__main__":
     ranged_data = pd.read_csv(
         r"CSV/Bronie prototyp - RANGED.csv",
+        header=0,
         names=(
             "id_ranged",
             "name",
