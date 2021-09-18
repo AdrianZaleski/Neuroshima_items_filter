@@ -1,13 +1,13 @@
-ID,Name,Description,Modifier 10m,Modifier 20m,Modifier 30m,Modifier 40m,Modifier 60m,Modifier 80m,Modifier 100m,Modifier 150m,Modifier 200m,Modifier 250m,Modifier 300m,Modifier 400m,Modifier 600m,Modifier 1000m,Modifier 1500m
-ARIFLE,Karabin automatyczny,"Karabin (karabinek) automatyczny – rodzaj broni strzeleckiej mogącej strzelać ogniem pojedynczym i seriami, strzelającej nabojem pośrednim lub karabinowym, nazywany też karabinem (karabinkiem) szturmowym. ",,,,,,,,,,,,,,,
-MACHINEGUN,Karabin maszynowy,"Duże karabiny wsparcia, zwykle z pojemnymi magazynkami i ciężkimi lufami wytrzymującymi długotrwały ogień automatyczny.",,,,,,,,,,,,,,,
-RIFLE,Karabin półautomatyczny,Długi karabin samopowtarzalny.,0,0,-10,-10,-20,-20,-30,-40,-60,-80,-120,-160,,,
-MPISTOL,Pistolet maszynowy,Mniejsza od karabinu automatyczna broń kalibru pistoletowego.,0,-10,-20,-30,-40,-60,-80,-120,-160,,,,,,
-PISTOL,Pistolet,Samopowtarzalna broń palna którą da się nosić w jednym ręku.,0,-20,-40,-80,-120,-160,,,,,,,,,
-REVOLVER,Rewolwer,Pistolet bębenkowy z samonapinającym się kurkiem. ,,,,,,,,,,,,,,,
-REPEATER,Karabin powtarzalny,"Karabin powtarzalny to rodzaj karabinu, w którym strzelec każdorazowo po oddaniu strzału musi ręcznie dokonać przeładowania broni wprowadzając pocisk do komory nabojowej przez wykonanie odpowiednich ruchów zamkiem, natomiast nabój podawany jest z magazynka.",,,,,,,,,,,,,,,
-LAUNCHER,Granatnik,"Granatnik powtarzalny, samopowtarzalny lub automatyczny.",0,0,-10,-10,-20,-20,-30,-40,-60,-80,-120,-160,,,
-BLACKPOWDER,Broń czarnoprochowa,"Broń czarnoprochowa – rodzaj broni palnej w której wystrzelenie pocisku jest efektem gwałtownego spalania czarnego prochu. Dziś taką broń w użyciu bojowym prawie zupełnie zastąpiła broń, w której spalane są różnego rodzaju prochy bezdymne, nitrocelulozowe.",,,,,,,,,,,,,,,
-PROJECTILE,Broń miotana,Broń która dostarcza pocisk do celu za pomocą siły ludzkich mięśni. ,,,,,,,,,,,,,,,
-SNIPER,Karabin snajperski,"Długi, wyborowy karabin o doskonałej celności.",0,0,-10,-10,-20,-20,-30,-30,-40,-40,-60,-80,-100,-120,-160
-SHOTGUN,Śrutówka,Ta broń strzela śrutem,30,0,-30,,,,,,,,,,,,
+ID,ID code,Name,Description,Modifier 10m,Modifier 20m,Modifier 30m,Modifier 40m,Modifier 60m,Modifier 80m,Modifier 100m,Modifier 150m,Modifier 200m,Modifier 250m,Modifier 300m,Modifier 400m,Modifier 600m,Modifier 1000m,Modifier 1500m
+1,ARIFLE,ARIFLE,"Karabin (karabinek) automatyczny – rodzaj broni strzeleckiej mogącej strzelać ogniem pojedynczym i seriami, strzelającej nabojem pośrednim lub karabinowym, nazywany też karabinem (karabinkiem) szturmowym. ",,,,,,,,,,,,,,,
+2,MACHINEGUN,Karabin maszynowy,"Duże karabiny wsparcia, zwykle z pojemnymi magazynkami i ciężkimi lufami wytrzymującymi długotrwały ogień automatyczny.",,,,,,,,,,,,,,,
+3,RIFLE,Karabin półautomatyczny,Długi karabin samopowtarzalny.,0,0,-10,-10,-20,-20,-30,-40,-60,-80,-120,-160,,,
+4,MPISTOL,Pistolet maszynowy,Mniejsza od karabinu automatyczna broń kalibru pistoletowego.,0,-10,-20,-30,-40,-60,-80,-120,-160,,,,,,
+5,PISTOL,Pistolet,Samopowtarzalna broń palna którą da się nosić w jednym ręku.,0,-20,-40,-80,-120,-160,,,,,,,,,
+6,REVOLVER,Rewolwer,Pistolet bębenkowy z samonapinającym się kurkiem. ,,,,,,,,,,,,,,,
+7,REPEATER,Karabin powtarzalny,"Karabin powtarzalny to rodzaj karabinu, w którym strzelec każdorazowo po oddaniu strzału musi ręcznie dokonać przeładowania broni wprowadzając pocisk do komory nabojowej przez wykonanie odpowiednich ruchów zamkiem, natomiast nabój podawany jest z magazynka.",,,,,,,,,,,,,,,
+8,LAUNCHER,Granatnik,"Granatnik powtarzalny, samopowtarzalny lub automatyczny.",0,0,-10,-10,-20,-20,-30,-40,-60,-80,-120,-160,,,
+9,BLACKPOWDER,Broń czarnoprochowa,"Broń czarnoprochowa – rodzaj broni palnej w której wystrzelenie pocisku jest efektem gwałtownego spalania czarnego prochu. Dziś taką broń w użyciu bojowym prawie zupełnie zastąpiła broń, w której spalane są różnego rodzaju prochy bezdymne, nitrocelulozowe.",,,,,,,,,,,,,,,
+10,PROJECTILE,Broń miotana,Broń która dostarcza pocisk do celu za pomocą siły ludzkich mięśni. ,,,,,,,,,,,,,,,
+11,SNIPER,Karabin snajperski,"Długi, wyborowy karabin o doskonałej celności.",0,0,-10,-10,-20,-20,-30,-30,-40,-40,-60,-80,-100,-120,-160
+12,SHOTGUN,Śrutówka,Ta broń strzela śrutem,30,0,-30,,,,,,,,,,,,
