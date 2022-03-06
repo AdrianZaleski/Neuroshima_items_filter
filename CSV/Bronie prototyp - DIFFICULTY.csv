@@ -1,0 +1,9 @@
+ID,Name,Range,Modifier
+EASY,Łatwy,0,2
+AVERAGE,Przeciętny,10,0
+PROBLEMATIC,Problematyczny,30,-2
+HARD,Trudny,60,-5
+VHARD,Bardzo trudny,90,-8
+XHARD,Cholernie trudny,120,-11
+LUCKY,Fart,160,-15
+IMPOSSIBLE,Nie da się,1000,-100
