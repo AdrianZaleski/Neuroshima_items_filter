@@ -9,7 +9,7 @@ import pandas as pd
 from mysql.connector import Error
 
 
-database = r"C:\\Python_Kurs\\Neuroshima\\database\\test.db"
+database = r"C:\\Python_Kurs\\Neuroshima\\database\\main_db.db"
 
 
 def create_connection(db_file):
@@ -48,6 +48,21 @@ def create_tables(database):
                 range INTEGER NOT NULL,
                 modifier INTEGER NOT NULL 
                 ); """
+
+    sql_create_damage_table = """CREATE TABLE IF NOT EXISTS damage (
+                    id TEXT PRIMARY KEY,
+                    name TEXT NOT NULL,
+                    description TEXT,
+                    symbol TEXT UNIQUE,
+                    effect_on_target TEXT, 	
+                    flat_modifier INTEGER NOT NULL,	
+                    pain_modifier INTEGER NOT NULL,	
+                    head_description TEXT,
+                    torso_description TEXT,
+                    r_arm_description TEXT,
+                    l_arm_description TEXT,
+                    leg_description TEXT
+                    ); """
 
     sql_create_ammo_table = """CREATE TABLE IF NOT EXISTS ammo (
                 id_code TEXT PRIMARY KEY,
@@ -107,7 +122,8 @@ def create_tables(database):
                 image BLOB,
                 
                 FOREIGN KEY (weapon_class) REFERENCES weapon (id_code),
-                FOREIGN KEY (ammo) REFERENCES ammo (id_code)
+                FOREIGN KEY (ammo) REFERENCES ammo (id_code),
+                FOREIGN KEY (damage) REFERENCES damage (symbol)
                 ); """
 
     conn = create_connection(database)
@@ -125,6 +141,9 @@ def create_tables(database):
 
         # create ranged table
         create_table(conn, sql_create_ranged_table)
+
+        # create damage table
+        create_table(conn, sql_create_damage_table)
 
     else:
         print("Error! cannot create the database connection.")
@@ -145,16 +164,23 @@ def csv_data_into_db_import(database):
     ammo_df = pd.DataFrame(ammo_data)
 
     ranged_data = pd.read_csv(
-        r"D:\Python_Kurs\Neuroshima\CSV\Bronie prototyp - RANGED.csv",
+        r"C:\Python_Kurs\Neuroshima\CSV\Bronie prototyp - RANGED.csv",
         header=0, skiprows=0
     )
     ranged_df = pd.DataFrame(ranged_data)
 
     weapon_data = pd.read_csv(
-        r"D:\\Python_Kurs\\Neuroshima\\CSV\\Bronie prototyp - WEAPON.csv",
+        r"C:\\Python_Kurs\\Neuroshima\\CSV\\Bronie prototyp - WEAPON.csv",
         header=0, skiprows=0
     )
     weapon_df = pd.DataFrame(weapon_data)
+
+    # Read data from files
+    damage_data = pd.read_csv(
+        r"C:\\Python_Kurs\\Neuroshima\\CSV\\Bronie prototyp - DAMAGE.csv",
+        header=0, skiprows=0
+    )
+    damage_df = pd.DataFrame(damage_data)
 
 
     # Inserting values from CSV into Table:
@@ -173,10 +199,16 @@ def csv_data_into_db_import(database):
     db_cols = list(pd.read_sql('SELECT * FROM weapon', conn))
     weapon_df = weapon_df.rename(columns=dict(zip(weapon_df.columns, db_cols)))
 
+    db_cols = list(pd.read_sql('SELECT * FROM damage', conn))
+    damage_df = damage_df.rename(columns=dict(zip(damage_df.columns, db_cols)))
+
+
+
     difficulty_df.to_sql("difficulty", con=conn, schema=None, if_exists="append", index=False, index_label=None)
     ammo_df.to_sql("ammo", con=conn, schema=None, if_exists="append", index=False, index_label=None)
     weapon_df.to_sql("weapon", con=conn, schema=None, if_exists="append", index=False)
     ranged_df.to_sql("ranged", con=conn, schema=None, if_exists="append", index=False)
+    damage_df.to_sql("damage", con=conn, schema=None, if_exists="append", index=False)
 
     return print('Importing values: Done')
 
