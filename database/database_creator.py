@@ -50,10 +50,10 @@ def create_tables(database):
                 ); """
 
     sql_create_damage_table = """CREATE TABLE IF NOT EXISTS damage (
-                    id TEXT PRIMARY KEY,
+                    id TEXT UNIQUE,
                     name TEXT NOT NULL,
                     description TEXT,
-                    symbol TEXT UNIQUE,
+                    symbol TEXT PRIMARY KEY,
                     effect_on_target TEXT, 	
                     flat_modifier INTEGER NOT NULL,	
                     pain_modifier INTEGER NOT NULL,	
@@ -70,7 +70,7 @@ def create_tables(database):
                 name TEXT NOT NULL,
                 price INTEGER NOT NULL,
                 availability INTEGER,
-                crafting_difficulty TEXT ,
+                crafting_difficulty TEXT NOT NULL,
                 description TEXT,
                 effect TEXT,
                 image BLOB,
@@ -107,7 +107,7 @@ def create_tables(database):
                 magazine INTEGER NOT NULL,
                 misfire_roll INTEGER NOT NULL,
                 celnosc_w_procentach INTEGER,
-                zasięg_[m] INTEGER,
+                zasieg INTEGER,
                 fire_rate INTEGER,
                 attack_type TEXT,
                 reload INTEGER,
@@ -201,7 +201,6 @@ def csv_data_into_db_import(database):
 
     db_cols = list(pd.read_sql('SELECT * FROM damage', conn))
     damage_df = damage_df.rename(columns=dict(zip(damage_df.columns, db_cols)))
-
 
 
     difficulty_df.to_sql("difficulty", con=conn, schema=None, if_exists="append", index=False, index_label=None)
