@@ -15,10 +15,14 @@ def index(request):
 
 
 def randomizer(request):
-    rand_num = random.randrange(0, 100)
+    guns = Ranged.objects.all()
+    list_of_guns = []
 
-    ranged = Ranged.objects.filter(availability__gte=rand_num)
-    context = {'ranged': ranged, 'rand_num': rand_num}
+    for gun in guns:
+        rand_num = random.randrange(0, 100)
+        if gun.availability >= rand_num:
+            list_of_guns.append(gun)
+
+    context = {'list_of_guns': list_of_guns}
 
     return render(request, 'items/randomizer_test.html', context)
-

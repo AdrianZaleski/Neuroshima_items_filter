@@ -9,15 +9,15 @@
     <h1>RANDOMIZER TEST</h1>
 
     <form id="searchForm" method="GET">
-        <p>Random number: {{ rand_num }}</p>
+        <p>Rzut na dostępność wykonywany dla każdej pozycji osobno! </p>
         <input id="submit-button" type="submit" value="new generate">
     </form>
 
-    {% if ranged %}
+    {% if list_of_guns %}
     <ul>
-    {% for ranged in ranged %}
+    {% for ranged in list_of_guns %}
 
-        <li>{{ ranged.name }} - cena w gamblach: {{ ranged.price }}</li>
+        <li>{{ ranged.name }} - cena w gamblach: {{ ranged.price }} --> avail: {{ ranged.availability }}</li>
 
         {% endfor %}
     </ul>
