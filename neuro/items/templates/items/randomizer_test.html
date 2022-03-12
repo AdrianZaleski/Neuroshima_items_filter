@@ -1,0 +1,28 @@
+{% load crispy_forms_tags %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Randomizer - test </title>
+</head>
+<body>
+    <h1>RANDOMIZER TEST</h1>
+
+    <form id="searchForm" method="GET">
+        <p>Random number: {{ rand_num }}</p>
+        <input id="submit-button" type="submit" value="new generate">
+    </form>
+
+    {% if ranged %}
+    <ul>
+    {% for ranged in ranged %}
+
+        <li>{{ ranged.name }} - cena w gamblach: {{ ranged.price }}</li>
+
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>No weapons are available.</p>
+    {% endif %}
+</body>
+</html>

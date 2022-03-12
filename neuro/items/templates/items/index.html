@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Neuroshima Item Filter</title>
+</head>
+<body>
+    <h1 style="text-align: center">Welcome to Neuroshima item filter</h1>
+    {% if difficulty %}
+    <ul>
+    {% for difficulty in difficulty %}
+
+        <li>{{ difficulty.name }}</li>
+
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No difficulties are available.</p>
+{% endif %}
+</body>
+</html>
