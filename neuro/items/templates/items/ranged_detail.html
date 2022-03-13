@@ -1,0 +1,24 @@
+{% extends 'items/main.html' %}
+
+{% block content %}
+
+    <h1>Nazwa: {{ ranged.name }}</h1>
+    <h1>Cena: {{ ranged.price }}</h1>
+    <h2>Typ: {{ ranged.weapon_class }}</h2>
+    <p>Amunicja: {{ ranged.ammo }}</p>
+    <p>Pojemność magazynka: {{ ranged.magazine }}</p>
+    <p>Zacięcie: {{ ranged.misfire_roll }}</p>
+    <p>Celność w %: {{ ranged.celnosc_w_procentach }}</p>
+    <p>Zasięg: {{ ranged.zasieg }}</p>
+    <p>Szybkostrzelność: {{ ranged.fire_rate }}</p>
+    <p>Typ ataku: {{ ranged.attack_type }}</p>
+    <p>Czas przeładowania: {{ ranged.reload }}</p>
+    <p>Punkty przebicia: {{ ranged.punkty_przebicia }}</p>
+    <p>Obrażenia: {{ ranged.damage }}</p>
+    <p>Wymagana Budowa: {{ ranged.strength }}</p>
+    <p>Czy poręczny: {{ ranged.holster }}</p>
+    <p>Dostępność: {{ ranged.availability }}</p>
+    <p>Akcje: {{ ranged.actions }}</p>
+    <p>Opis: {{ ranged.description }}</p>
+
+{% endblock content %}

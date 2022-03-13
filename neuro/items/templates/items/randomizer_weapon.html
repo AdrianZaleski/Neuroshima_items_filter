@@ -1,12 +1,9 @@
+{% extends 'items/main.html' %}
 {% load crispy_forms_tags %}
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Randomizer - test </title>
-</head>
-<body>
-    <h1>RANDOMIZER TEST</h1>
+{% block content %}
+
+    <h1>RANGED WEAPON RANDOMIZER</h1>
 
     <form id="searchForm" method="GET">
         <p>Rzut na dostępność wykonywany dla każdej pozycji osobno! </p>
@@ -17,12 +14,15 @@
     <ul>
     {% for ranged in list_of_guns %}
 
-        <li>{{ ranged.name }} - cena w gamblach: {{ ranged.price }} --> avail: {{ ranged.availability }}</li>
+        <li>
+            {{ ranged.name }} - cena w gamblach: {{ ranged.price }}
+            <a id="" href="{% url 'items:ranged_detail' ranged.id_code %}">Read more</a>
+        </li>
 
         {% endfor %}
     </ul>
     {% else %}
         <p>No weapons are available.</p>
     {% endif %}
-</body>
-</html>
+
+{% endblock content %}
