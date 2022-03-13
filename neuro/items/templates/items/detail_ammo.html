@@ -1,0 +1,14 @@
+{% extends 'items/main.html' %}
+
+{% block content %}
+
+    <h1>Nazwa: {{ ammo.name }}</h1>
+    <h1>Cena: {{ ammo.price }}</h1>
+    <p>Dostępność: {{ ammo.availability }}</p>
+    <p>Opis: {{ ammo.description }}</p>
+    <p>Trudność produkcji: {{ ammo.crafting_difficulty }}</p>
+    <p>Efekt: {{ ammo.effect }}</p>
+    <p>Masa: {{ ammo.weight }}</p>
+    <p>Image: {{ ammo.image }}</p>
+
+{% endblock content %}

@@ -3,26 +3,26 @@
 
 {% block content %}
 
-    <h1>RANGED WEAPON RANDOMIZER</h1>
+    <h1>Ammunition RANDOMIZER</h1>
 
     <form id="searchForm" method="GET">
         <p>Rzut na dostępność wykonywany dla każdej pozycji osobno! </p>
         <input id="submit-button" type="submit" value="new generate">
     </form>
 
-    {% if list_of_guns %}
+    {% if list_of_ammo %}
     <ul>
-    {% for ranged in list_of_guns %}
+    {% for ammo in list_of_ammo %}
 
         <li>
-            {{ ranged.name }} - cena w gamblach: {{ ranged.price }}
-            <a id="" href="{% url 'items:detail_ranged' ranged.id_code %}">Read more</a>
+            {{ ammo.name }} - cena w gamblach: {{ ammo.price }}
+            <a id="" href="{% url 'items:detail_ammo' ammo.id_code %}">Read more</a>
         </li>
 
         {% endfor %}
     </ul>
     {% else %}
-        <p>No weapons are available.</p>
+        <p>No ammunition is available.</p>
     {% endif %}
 
 {% endblock content %}
