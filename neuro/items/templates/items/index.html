@@ -5,17 +5,31 @@
     <title>Neuroshima Item Filter</title>
 </head>
 <body>
+    {% include 'items/navbar.html'%}
+
     <h1 style="text-align: center">Welcome to Neuroshima item filter</h1>
-    {% if difficulty %}
+    <p>Różne elementy tutaj będą wyświetlone - wraz z informacjami co i jak.</p>
+
+    <p>Póki co jest zrobione:</p>
     <ul>
-    {% for difficulty in difficulty %}
-
-        <li>{{ difficulty.name }}</li>
-
-        {% endfor %}
+        <li>
+            Wyświetlanie listy wszystkich broni w bazie:
+            <a href="{% url 'items:all_ranged'%}">Tutaj</a>
+        </li>
+        <li>
+            Wyświetlanie listy całej amunicji  w bazie:
+            <a href="{% url 'items:all_ammo'%}">Tutaj</a>
+        </li>
+        <li>
+            Random filter broni:
+            <a href="{% url 'items:random_ranged'%}">Tutaj</a>
+        </li>
+        <li>
+            Random filter amunicji:
+            <a href="{% url 'items:random_ammo'%}">Tutaj</a>
+        </li>
+        <li>Wyświetlanie szczegółowe broni</li>
+        <li>Wyświetlanie szczegółowe amunicji</li>
     </ul>
-{% else %}
-    <p>No difficulties are available.</p>
-{% endif %}
 </body>
 </html>

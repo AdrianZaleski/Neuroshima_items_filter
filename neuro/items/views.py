@@ -29,6 +29,12 @@ def index(request):
     return render(request, 'items/index.html', context)
 
 
+def ranged_all(request):
+    guns = Ranged.objects.all()
+    context = {'list_of_guns': guns}
+    return render(request, 'items/all_ranged.html', context)
+
+
 def randomized_ranged_weapons(request):
     guns = Ranged.objects.all()
     list_of_guns = []
@@ -46,6 +52,12 @@ def detail_ranged(request, id_code):
     ranged = Ranged.objects.get(id_code=id_code)
     context = {'ranged': ranged}
     return render(request, 'items/detail_ranged.html', context)
+
+
+def ammo_all(request):
+    ammo = Ammo.objects.all()
+    context = {'list_of_ammo': ammo}
+    return render(request, 'items/all_ammo.html', context)
 
 
 def randomized_ammo(request):

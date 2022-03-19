@@ -1,0 +1,21 @@
+{% extends 'items/main.html' %}
+
+{% block content %}
+
+    <h1>Cała amunicja dostępna w bazie</h1>
+
+ {% if list_of_ammo %}
+    <ul>
+    {% for ammo in list_of_ammo %}
+
+        <li>
+            {{ ammo.name }} - cena w gamblach: {{ ammo.price }}
+            <a id="" href="{% url 'items:detail_ammo' ammo.id_code %}">Read more</a>
+        </li>
+
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>No ammunition is available.</p>
+    {% endif %}
+{% endblock %}

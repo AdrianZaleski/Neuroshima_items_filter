@@ -1,0 +1,20 @@
+{% extends 'items/main.html' %}
+
+{% block content %}
+<h1>Wszystkie bronie w bazie</h1>
+
+ {% if list_of_guns %}
+    <ul>
+    {% for ranged in list_of_guns %}
+
+        <li>
+            {{ ranged.name }} - cena w gamblach: {{ ranged.price }}
+            <a id="" href="{% url 'items:detail_ranged' ranged.id_code %}">Read more</a>
+        </li>
+
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>No weapons are available.</p>
+    {% endif %}
+{% endblock %}
