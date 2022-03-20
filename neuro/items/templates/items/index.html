@@ -1,35 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Neuroshima Item Filter</title>
-</head>
-<body>
-    {% include 'items/navbar.html'%}
+{% extends 'items/main.html' %}
+{% load static %}
 
-    <h1 style="text-align: center">Welcome to Neuroshima item filter</h1>
-    <p>Różne elementy tutaj będą wyświetlone - wraz z informacjami co i jak.</p>
+{% block content %}
 
-    <p>Póki co jest zrobione:</p>
-    <ul>
-        <li>
-            Wyświetlanie listy wszystkich broni w bazie:
-            <a href="{% url 'items:all_ranged'%}">Tutaj</a>
-        </li>
-        <li>
-            Wyświetlanie listy całej amunicji  w bazie:
-            <a href="{% url 'items:all_ammo'%}">Tutaj</a>
-        </li>
-        <li>
-            Random filter broni:
-            <a href="{% url 'items:random_ranged'%}">Tutaj</a>
-        </li>
-        <li>
-            Random filter amunicji:
-            <a href="{% url 'items:random_ammo'%}">Tutaj</a>
-        </li>
-        <li>Wyświetlanie szczegółowe broni</li>
-        <li>Wyświetlanie szczegółowe amunicji</li>
-    </ul>
-</body>
-</html>
+<div class="intro">
+    Welcome to Neuroshima item filter
+</div>
+
+<p>Różne elementy tutaj będą wyświetlone - wraz z informacjami co i jak.</p>
+
+<p>Póki co jest zrobione:</p>
+<ul>
+    <li>
+        Wyświetlanie listy wszystkich broni w bazie:
+        <a href="{% url 'items:all_ranged'%}">Tutaj</a>
+    </li>
+    <li>
+        Wyświetlanie listy całej amunicji w bazie:
+        <a href="{% url 'items:all_ammo'%}">Tutaj</a>
+    </li>
+    <li>
+        Random filter broni:
+        <a href="{% url 'items:random_ranged'%}">Tutaj</a>
+    </li>
+    <li>
+        Random filter amunicji:
+        <a href="{% url 'items:random_ammo'%}">Tutaj</a>
+    </li>
+    <li>Wyświetlanie szczegółowe broni</li>
+    <li>Wyświetlanie szczegółowe amunicji</li>
+</ul>
+
+{% endblock %}

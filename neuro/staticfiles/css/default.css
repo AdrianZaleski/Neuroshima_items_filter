@@ -1,0 +1,89 @@
+:root {
+    --mainColor: #ae8b0c;
+    --secondaryColor: #fff;
+
+    --borderColor: #2f3234;
+    --themeDotBorder: #24292e;
+    --previewBg: rgb(251, 249, 243, 0.8);
+    --previewShadow: #f0ead6;
+
+    --mainText: black;
+    --secondaryText: #0b1941;
+    --linkText: #033592;
+
+    --buttonColor: black;
+}
+
+html,
+body {
+    font-family: "VT323", sans-serif;
+    background: var(--mainColor);
+}
+
+.navbar {
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.intro {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.item-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 320px);
+    gap: 20px;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+.item {
+    border: 1px solid var(--borderColor);
+    background-color: var(--secondaryColor);
+    -webkit-box-shadow: 11px 0px 46px -9px rgba(29, 43, 204, 1);
+    -moz-box-shadow: 11px 0px 46px -9px rgba(29, 43, 204, 1);
+    box-shadow: 11px 0px 46px -9px rgba(29, 43, 204, 1);
+}
+
+.thumbnail {
+    display: block;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.item-preview {
+    background-color: var(--mainColor);
+}
+
+.item-title {
+    color: var(--mainText);
+    margin-top: 5px;
+    margin-left: 14px;
+    margin-bottom: 14px;
+}
+
+.item-intro {
+    color: var(--secondaryText);
+    font-size: 14px;
+    margin-left: 14px;
+}
+
+#item-link {
+    margin-left: 14px;
+    margin-bottom: 14px;
+}
+
+.tag {
+    display: inline-block;
+    color: #fff;
+    background-color: #888;
+    border-radius: 5px;
+    margin: 2px;
+    padding: 3px 5px;
+    font-size: 12px;
+}

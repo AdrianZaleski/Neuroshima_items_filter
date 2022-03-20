@@ -1,0 +1,171 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap");
+
+:root {
+    --mainColor: #ae8b0c;
+}
+
+.navbar {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--mainColor);
+}
+
+.navigation {
+    padding: 0;
+    box-sizing: border-box;
+
+    position: relative;
+    width: 400px;
+    height: 70px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.navigation ul {
+    padding: 0;
+    box-sizing: border-box;
+
+    display: flex;
+    width: 350px;
+}
+
+.navigation ul li {
+    padding: 0;
+    box-sizing: border-box;
+
+    position: relative;
+    list-style: none;
+    width: 70px;
+    height: 40px;
+    z-index: 1;
+}
+
+.navigation ul li a {
+    padding: 0;
+    box-sizing: border-box;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+}
+
+.navigation ul li a .icon {
+    padding: 0;
+    box-sizing: border-box;
+
+    position: relative;
+    display: block;
+    line-height: 30px;
+    font-size: 2em;
+    text-align: center;
+    transition: 0.5s;
+    color: black;
+}
+
+.navigation ul li.active a .icon {
+    transform: translateY(-30px);
+}
+
+.navigation ul li:hover a .icon {
+    transform: translateY(-30px);
+}
+
+.navigation ul li a .text {
+    padding: 0;
+    box-sizing: border-box;
+
+    position: absolute;
+    font-weight: 400;
+    font-size: 1.25em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.navigation ul li.active a .text {
+    opacity: 1;
+    transform: translateY(20px);
+}
+
+.navigation ul li:hover a .text {
+    opacity: 1;
+    transform: translateY(20px);
+}
+
+.indicator {
+    padding: 0;
+    box-sizing: border-box;
+
+    top: -50%;
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background-color: #fae500;
+    border-radius: 50%;
+    border: 6px solid var(--mainColor);
+    transition: 0.5s;
+}
+
+.indicator::before {
+    padding: 0;
+    box-sizing: border-box;
+
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -22px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-right-radius: 20px;
+    box-shadow: 1px -10px 0 0 var(--mainColor);
+}
+
+.indicator::after {
+    padding: 0;
+    box-sizing: border-box;
+
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -22px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-left-radius: 20px;
+    box-shadow: -1px -10px 0 0 var(--mainColor);
+}
+
+.navigation ul li:nth-child(1).active ~ .indicator {
+    transform: translateX(calc(70px * 0));
+}
+
+.navigation ul li:nth-child(2).active ~ .indicator {
+    transform: translateX(calc(70px * 1));
+}
+
+.navigation ul li:nth-child(3).active ~ .indicator {
+    transform: translateX(calc(70px * 2));
+}
+
+.navigation ul li:nth-child(4).active ~ .indicator {
+    transform: translateX(calc(70px * 3));
+}
+
+.navigation ul li:nth-child(5).active ~ .indicator {
+    transform: translateX(calc(70px * 4));
+}

@@ -81,7 +81,7 @@ class Ammo(models.Model):
     crafting_difficulty = models.ForeignKey('Difficulty', on_delete=models.CASCADE, db_column='crafting_difficulty')
     description = models.TextField(blank=True, null=True)
     effect = models.TextField(blank=True, null=True)
-    image = models.BinaryField(blank=True, null=True)
+    thumbnail = models.ImageField(null=True, blank=True, upload_to="images/ammo", default="placeholder.png")
     weight = models.IntegerField(blank=True, null=True)
 
     class Meta:
@@ -112,7 +112,7 @@ class Ranged(models.Model):
     availability = models.IntegerField()
     actions = models.TextField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
-    image = models.BinaryField(blank=True, null=True)
+    thumbnail = models.ImageField(null=True, blank=True, upload_to="images/ranged", default="placeholder.png")
 
     class Meta:
         managed = True
