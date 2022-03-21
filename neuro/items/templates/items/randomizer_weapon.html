@@ -3,26 +3,40 @@
 
 {% block content %}
 
-    <h1>RANGED WEAPON RANDOMIZER</h1>
+<div class="intro">
+    RANGED WEAPON RANDOMIZER
+</div>
 
-    <form id="searchForm" method="GET">
-        <p>Rzut na dostępność wykonywany dla każdej pozycji osobno! </p>
-        <input id="submit-button" type="submit" value="new generate">
-    </form>
 
-    {% if list_of_guns %}
-    <ul>
+<form id="searchForm" method="GET">
+    <p>Rzut na dostępność wykonywany dla każdej pozycji osobno! </p>
+    <input class="generate-btn" id="submit-button" type="submit" value="new generate">
+</form>
+
+<div class="item-wrapper">
     {% for ranged in list_of_guns %}
+    <div>
+        <div class="item">
+            <img class="thumbnail" src="{{ ranged.thumbnail.url }} ">
+            <div class="item-preview">
+                <h4 class="item-title">{{ranged.name}}</h4>
+                <h4 class="item-addition">typ: {{ ranged.weapon_class}}</h4>
+                <h4 class="item-addition">min budowa: {{ ranged.strength }}</h4>
+                <p class="item-intro">{{ranged.description|slice:":100"}} </p>
 
-        <li>
-            {{ ranged.name }} - cena w gamblach: {{ ranged.price }}
-            <a id="" href="{% url 'items:detail_ranged' ranged.id_code %}">Read more</a>
-        </li>
+                <a id="item-link" class="btn btn-info" href="{% url 'items:detail_ranged' ranged.id_code %}">Read
+                    more</a>
+                <h4 class="item-price">cena:
+                    <strong>{{ranged.price}}</strong>
+                </h4>
+                <hr>
+            </div>
+        </div>
+    </div>
 
-        {% endfor %}
-    </ul>
-    {% else %}
-        <p>No weapons are available.</p>
-    {% endif %}
+    {% empty %}
+    <h3> No weapons yet... </h3>
+    {% endfor %}
 
+</div>
 {% endblock content %}

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap");
+
 :root {
     --mainColor: #ae8b0c;
 
@@ -19,12 +21,74 @@ body {
     background-color: var(--mainColor);
 }
 
-.navbar {
-    padding-top: 20px;
-    padding-bottom: 10px;
+.s1 {
+    background-color: var(--mainColor);
+    border-bottom: 1px solid var(--borderColor);
+    overflow: auto;
 }
 
-.intro {
+.main-container {
+    width: 1500px;
+    margin: 0 auto;
+    background-color: var(--secondaryColor);
+}
+
+.randomizer {
+    font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1em;
+}
+
+.generate-btn {
+    border-radius: 10px;
+    background-color: rgb(1, 8, 1);
+
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
+
+.search-wrapper {
+    border: 1px solid var(--borderColor);
+    border-radius: 5px 5px 0 0;
+
+    -webkit-box-shadow: 11px 0px 46px -9px rgba(29, 43, 204, 1);
+    -moz-box-shadow: 11px 0px 46px -9px rgba(29, 43, 204, 1);
+    box-shadow: 11px 0px 46px -9px rgba(29, 43, 204, 1);
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "nav-wrapper"
+        "left-column";
+}
+
+#searchForm {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 20px;
+    background-color: var(--mainColor);
+}
+
+#div_id_weapon_class > div {
+    max-height: 100px;
+    overflow-y: scroll;
+    border: 1px solid #888;
+    padding-bottom: 5px;
+    border-radius: 5px;
+}
+
+#div_id_ammo > div {
+    max-height: 100px;
+    overflow-y: scroll;
+    border: 1px solid #888;
+    padding-bottom: 5px;
+    border-radius: 5px;
+}
+
+
+.greeting-wrapper {
     margin-top: 10px;
     margin-bottom: 10px;
     text-align: center;
@@ -77,7 +141,6 @@ body {
     color: var(--secondaryText);
     font-size: 18px;
     margin-left: 14px;
-    
 }
 
 #item-link {
@@ -85,12 +148,50 @@ body {
     margin-bottom: 14px;
 }
 
-.tag {
-    display: inline-block;
-    color: #fff;
-    background-color: #888;
-    border-radius: 5px;
-    margin: 2px;
-    padding: 3px 5px;
-    font-size: 12px;
+.item-price {
+    float: right;
+    padding-right: 10px;
+}
+
+.row {
+    width: 1500px;
+    margin: 0 auto;
+}
+
+.page-indicator {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination a {
+    margin: 2px 4px; /* 0 is for top and bottom. Feel free to change it */
+}
+
+.page-item {
+    display: inline;
+    padding: 4px 5px 4px 5px;
+    border: 1px solid var(--borderColor);
+    font-size: 20px;
+}
+
+/* making that screen is adjusting to the width of the frame - close to the mobiles */
+@media screen and (max-width: 1500px) {
+    .main-container,
+    .row {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .search-wrapper {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "nav-wrapper"
+            "left-column"
+            "right-column";
+    }
+    .right-column {
+        justify-content: center;
+    }
 }
