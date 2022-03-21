@@ -3,10 +3,10 @@ import random
 # Create your views here.
 from django.shortcuts import render
 from django.views import generic
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import Ranged, Difficulty, Ammo
-
+from .filters import RangedFilter
 
 # As a standoff function - to much recursion occurs:
 # USe as a copy to modify in each view separate.
@@ -31,7 +31,21 @@ def index(request):
 
 def ranged_all(request):
     guns = Ranged.objects.all()
-    context = {'list_of_guns': guns}
+    my_filter = RangedFilter(request.GET, queryset=guns)
+    guns = my_filter.qs
+    
+    page = request.GET.get('page')
+    paginator = Paginator(guns, 10)
+    page_range = paginator.get_elided_page_range(number=page)
+    
+    try:
+        guns = paginator.page(page)
+    except PageNotAnInteger:
+        guns = paginator.page(1)
+    except EmptyPage:
+        guns = paginator.page(paginator.num_pages)
+    
+    context = {'list_of_guns': guns, 'my_filter': my_filter}
     return render(request, 'items/all_ranged.html', context)
 
 
