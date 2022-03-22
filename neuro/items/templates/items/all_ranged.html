@@ -4,6 +4,8 @@
 {% block content %}
 
 
+
+
 <section class="s1">
     <div class="main-container">
         <div class="greeting-wrapper">
@@ -13,11 +15,7 @@
             To randomizer -> <a href="{% url 'items:random_ranged'%}" class="generate-btn" type="button"
                 style=>Randomizer</a>
         </div>
-
-
-
-
-
+        
         <div class="search-wrapper">
             <form class='nav-wrapper' id="searchForm" method="GET">
                 {{my_filter.form|crispy}}
@@ -60,8 +58,9 @@
             {% endfor %}
         </div>
 
+
         <!-- Pagination -->
-        <ul class="pagination justify-content-center flex-wrap mt-2 mb-4">
+        <ul class="page-indicator">
             {% if list_of_guns.has_previous %}
             <li class="page-item">
                 <a data-page="{{list_of_guns.previous_page_number}}" class="page-link"
@@ -76,8 +75,8 @@
             <li class="page-item"><a class="active-page-link">{{i}}</a></li>
             {% else %}
 
-            {% if i == list_of_guns.paginator.ELLIPSIS %}
-            <li class="page-item"><span class="page-link">{{ i }}</span></li>
+            {% if i == ranged.paginator.ELLIPSIS %}
+            <li class="page-item"><span class="page-link">{{ paginator.ELLIPSIS }}</span></li>
             {% else %}
             <li class="page-item"><a data-page="{{i}}" href="?page={{i}}" class="page-link">{{i}}</a></li>
             {% endif %}

@@ -34,9 +34,9 @@ def ranged_all(request):
     my_filter = RangedFilter(request.GET, queryset=guns)
     guns = my_filter.qs
     
-    page = request.GET.get('page')
+    page = request.GET.get('page', 1)
     paginator = Paginator(guns, 10)
-    page_range = paginator.get_elided_page_range(number=page)
+    page_range = paginator.get_elided_page_range(number=page, on_each_side=3, on_ends=2)
     
     try:
         guns = paginator.page(page)
