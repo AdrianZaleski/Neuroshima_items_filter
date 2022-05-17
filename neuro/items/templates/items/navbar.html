@@ -5,7 +5,7 @@
 <section class="navbar">
     <div class='navigation'>
         <ul>
-            <li class='navbar_list active' id="home">
+            <li data-mode="home" class='navbar_list' id="home">
                 <a href="{% url 'items:index'%}">
                     <span class="icon">
                         <ion-icon name="skull-outline"></ion-icon>
@@ -13,7 +13,7 @@
                     <span class="text">Home</span>
                 </a>
             </li>
-            <li class='navbar_list' id="ranged">
+            <li data-mode="ranged" class='navbar_list' id="ranged">
                 <a href="{% url 'items:all_ranged'%}">
                     <span class="icon">
                         <ion-icon name="telescope-outline"></ion-icon>
@@ -21,7 +21,7 @@
                     <span class="text">Ranged</span>
                 </a>
             </li>
-            <li class='navbar_list' id="ammo">
+            <li data-mode="ammo" class='navbar_list' id="ammo">
                 <a href="{% url 'items:all_ammo' %}">
                     <span class="icon">
                         <ion-icon name="rocket-outline"></ion-icon>
@@ -29,7 +29,7 @@
                     <span class="text">Ammo</span>
                 </a>
             </li>
-            <li class='navbar_list' id="junk">
+            <li data-mode="junk" class='navbar_list' id="junk">
                 <a href="#">
                     <span class="icon">
                         <ion-icon name="trash-outline"></ion-icon>
@@ -37,7 +37,7 @@
                     <span class="text">Junk</span>
                 </a>
             </li>
-            <li class='navbar_list' id="data">
+            <li data-mode="data" class='navbar_list' id="data">
                 <a href="#">
                     <span class="icon">
                         <ion-icon name="cog-outline"></ion-icon>
@@ -52,7 +52,6 @@
     <script type="text/javascript">
         let static = "{% static 'css' %}"
     </script>
-
 
     <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
 

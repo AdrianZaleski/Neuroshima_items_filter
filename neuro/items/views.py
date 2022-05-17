@@ -24,9 +24,7 @@ from .filters import RangedFilter
 
 
 def index(request):
-    difficulty = Difficulty.objects.all()
-    context = {"difficulty": difficulty}
-    return render(request, 'items/index.html', context)
+    return render(request, 'items/index.html')
 
 
 def ranged_all(request):

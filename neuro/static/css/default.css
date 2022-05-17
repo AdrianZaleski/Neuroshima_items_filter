@@ -42,7 +42,7 @@ body {
 
 .generate-btn {
     border-radius: 10px;
-    background-color: rgb(1, 8, 1);
+    background-color: var(--mainColor);
 
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
