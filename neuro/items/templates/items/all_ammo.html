@@ -1,11 +1,26 @@
 {% extends 'items/main.html' %}
 {% load static %}
-
+{% load crispy_forms_tags %}
 {% block content %}
 
-<div class="intro">
-    Cała amunicja dostępna w bazie:
-</div>
+<section class="s1">
+    <div class="main-container">
+        <div class="greeting-wrapper">
+            Cała amunicja w bazie:
+        </div>
+
+        <div class="randomizer">
+            To randomizer -> <a href="{% url 'items:random_ammo'%}" class="generate-btn" type="button"
+                style=>Ammo Randomizer</a>
+        </div>
+
+        <div class="page-wrapper">
+            <div class="search-wrapper">
+                <form class='nav-wrapper' id="searchForm" method="GET">
+                    {{my_filter.form|crispy}}
+                    <input id="submit-button" type="submit" value="search">
+                </form>
+            </div>
 
 <div class="item-wrapper">
     {% for ammo in list_of_ammo %}
@@ -28,7 +43,7 @@
     </div>
 
     {% empty %}
-    <h3> No weapons yet... </h3>
+    <h3> No ammo yet... </h3>
     {% endfor %}
 
 </div>
