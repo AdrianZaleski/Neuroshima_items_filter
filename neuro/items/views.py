@@ -48,16 +48,8 @@ def ranged_all(request):
 
 
 def randomized_ranged_weapons(request):
-    guns = Ranged.objects.all()
-    list_of_guns = []
-    for gun in guns:
-        rand_num = random.randrange(0, 100)
-        if gun.availability >= rand_num:
-
-            list_of_guns.append(gun)
-    context = {'list_of_guns': list_of_guns}
-
-    return render(request, 'items/randomizer_weapon.html', context)
+    guns = Ranged.randomizer()
+    return render(request, 'items/randomizer_weapon.html', {"list_of_guns" : guns})
 
 
 def detail_ranged(request, id_code):
@@ -73,15 +65,8 @@ def ammo_all(request):
 
 
 def randomized_ammo(request):
-    ammunition = Ammo.objects.all()
-    list_of_ammo = []
-    for ammo in ammunition:
-        rand_num = random.randrange(0, 100)
-        if ammo.availability >= rand_num:
-            list_of_ammo.append(ammo)
-    context = {'list_of_ammo': list_of_ammo}
-
-    return render(request, 'items/randomizer_ammo.html', context)
+    ammunition = Ammo.randomizer()
+    return render(request, 'items/randomizer_ammo.html', {"list_of_ammo" : ammunition})
 
 
 def detail_ammo(request, id_code):

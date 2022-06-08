@@ -5,6 +5,7 @@
 #   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
+import random
 from django.db import models
 
 
@@ -18,7 +19,7 @@ class Difficulty(models.Model):
         managed = True
         db_table = 'difficulty'
 
-    def __str__(self):
+    def __str__(self) -> str :
         return self.name
 
 
@@ -40,7 +41,7 @@ class Damage(models.Model):
         managed = True
         db_table = 'damage'
 
-    def __str__(self):
+    def __str__(self) -> str :
         return self.name
 
 
@@ -68,7 +69,7 @@ class Weapon(models.Model):
         managed = True
         db_table = 'weapon'
 
-    def __str__(self):
+    def __str__(self) -> str :
         return self.name
 
 
@@ -88,8 +89,17 @@ class Ammo(models.Model):
         managed = True
         db_table = 'ammo'
 
-    def __str__(self):
+    def __str__(self) -> str :
         return self.name
+
+    def randomizer() -> list:  
+        ammunition = Ammo.objects.all()
+        list_of_ammo = []
+        for ammo in ammunition:
+            rand_num = random.randrange(0, 100)
+            if ammo.availability >= rand_num:
+                list_of_ammo.append(ammo)
+        return list_of_ammo
 
 
 class Ranged(models.Model):
@@ -118,5 +128,16 @@ class Ranged(models.Model):
         managed = True
         db_table = 'ranged'
 
-    def __str__(self):
+    def __str__(self) -> str :
         return self.name
+
+    def randomizer() -> list:  
+        guns = Ranged.objects.all()
+        list_of_guns = []
+
+        for gun in guns:
+            rand_num = random.randrange(0, 100)
+            if gun.availability >= rand_num:
+                list_of_guns.append(gun)
+                print(gun)
+        return list_of_guns

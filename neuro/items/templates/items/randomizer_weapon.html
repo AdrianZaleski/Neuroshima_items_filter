@@ -13,11 +13,21 @@
                 <form id="searchForm" method="GET">
                     <p>Rzut na dostępność wykonywany dla każdej pozycji osobno! </p>
                     <input class="generate-btn" id="submit-button" type="submit" value="Random generate">
+
                 </form>
+
             </div>
         </div>
+        <div>
+            <button class="btn btn-primary test_button" ranged_name={{ ranged.name}} value="TEST PRZYCISK">
+            </button>
+            <p>{{ ranged.name}}
+        </div>
+        <div>
 
+        </div>
         <div class="item-wrapper">
+            
             {% for ranged in list_of_guns %}
             <div>
                 <div class="item">
