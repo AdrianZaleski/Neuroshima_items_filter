@@ -2,6 +2,7 @@ import random
 
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.generic import DetailView
 
 from .models import Ranged, Ammo
 from .filters import RangedFilter
@@ -35,10 +36,9 @@ def randomized_ranged_weapons(request):
     return render(request, 'items/randomizer_weapon.html', {"list_of_guns" : guns})
 
 
-def detail_ranged(request, id_code):
-    ranged = Ranged.objects.get(id_code=id_code)
-    context = {'ranged': ranged}
-    return render(request, 'items/detail_ranged.html', context)
+class RangedDetailView(DetailView):
+    template_name = 'items/detail_ranged.html'
+    model = Ranged
 
 
 def ammo_all(request):
@@ -52,7 +52,6 @@ def randomized_ammo(request):
     return render(request, 'items/randomizer_ammo.html', {"list_of_ammo" : ammunition})
 
 
-def detail_ammo(request, id_code):
-    ammo = Ammo.objects.get(id_code=id_code)
-    context = {'ammo': ammo}
-    return render(request, 'items/detail_ammo.html', context)
+class AmmoDetailView(DetailView):
+    template_name = 'items/detail_ammo.html'
+    model = Ammo
