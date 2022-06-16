@@ -1,27 +1,10 @@
 import random
 
-# Create your views here.
 from django.shortcuts import render
-from django.views import generic
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from .models import Ranged, Difficulty, Ammo
+from .models import Ranged, Ammo
 from .filters import RangedFilter
-
-# As a standoff function - to much recursion occurs:
-# USe as a copy to modify in each view separate.
-# def randomizer(request):
-#     guns = Ranged.objects.all()
-#     list_of_guns = []
-#     for gun in guns:
-#         rand_num = random.randrange(0, 100)
-#         if gun.availability >= rand_num:
-#
-#             list_of_guns.append(gun)
-#     context = {'list_of_guns': list_of_guns}
-#
-#     return render(request, 'items/randomizer_weapon.html', context)
-
 
 def index(request):
     return render(request, 'items/index.html')
